@@ -1,5 +1,4 @@
 
-AVRMCU=m1280
 MCU=atmega1280
 FREQ=16000000
 
@@ -8,7 +7,7 @@ SRCS=	anngs.c gui.c navi.c pacman.c
 #	drivers
 SRCS+=	eeprom.c ads7846.c hx8347.c nmea_uart.c	# zigbee vs1053 sdcard
 
-CPPFLAGS+= -D__AVR_ATmega1280__ -I${.CURDIR} -I. -DDEBUG
+CPPFLAGS+= -I${.CURDIR} -I. -DDEBUG
 CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
 LDFLAGS	= -Wl,-Map=$(PROG).map,--cref
 CLEANFILES+=${PROG}.map
