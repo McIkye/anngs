@@ -6,6 +6,8 @@ PROG=	anngs
 SRCS=	anngs.c gui.c navi.c pacman.c
 #	drivers
 SRCS+=	eeprom.c ads7846.c hx8347.c nmea_uart.c	# zigbee vs1053 sdcard
+#
+SRCS+=	delay.S
 
 CPPFLAGS+= -I${.CURDIR} -I. -DDEBUG
 CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
