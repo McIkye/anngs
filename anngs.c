@@ -78,7 +78,7 @@ pg1/rd		- xmem
 pg2/ale		- xmem
 pg3/tosc2	-
 pg4/tosc1	-
-pg5/oc0b	- sd_cs
+pg5/oc0b	-
 
 pg6/xck
 pg7/xck
@@ -128,9 +128,34 @@ msd:
 
  */
 
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+#include "spi.h"
+#include "hx8347.h"
+#include "util.h"
+
 int
 main()
 {
+	cli();
+
+	/* ads_cs, lcd_cs, lcd_rst, lcd_led */
+	PORTH = _BV(PORTH3) | _BV(PORTH4) | _BV(PORTH5);
+	DDRH = _BV(DDH3) | _BV(DDH4) | _BV(DDH5) | _BV(DDH6);
+	/* ss, sck, mosi, sd_cs, led */
+	PORTB = _BV(PORTB4) | _BV(PORTB7);
+	DDRB = _BV(DDB0) | _BV(DDB1) | _BV(DDB2) | _BV(DDB4) | _BV(DDB7);
+
+	spi_init();
+	hx8347_init();
+
+	hx8347_putchar(10, 10, 127, 0);
+	hx8347_putstr(10, 20, "Hello world!", 0);
+	while (1) {
+		msdelay(500);
+		PORTB ^= _BV(PORTB7);
+	}
 
 	return 0;
 }

@@ -14,4 +14,9 @@ CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
 LDFLAGS	= -Wl,-Map=$(PROG).map,--cref
 CLEANFILES+=${PROG}.map
 
+${.CURDIR}/hx8347.c: font.h
+
+font.h: ${.CURDIR}/font.src
+	${SHELL} $? > $@
+
 .include "../bsd.avr.mk"

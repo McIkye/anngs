@@ -6,8 +6,16 @@
 god speed yer firestarter
 
 
-check each source file for appropriate license and distribution
-information that is mostly isc-style
+basd on:
+ - mega seeeduino (atmega128)
+ - msd shield (incl. ds1307)
+ - MI0283QT-2 lcd touch screen (hx8347/ads7846)
+ - GPS (EM406 SiRF III)
+ - accellerometer
+ - battery
+
+check each source file for an appropriate
+license and distribution terms that are mostly isc-style
 
 for the bsd.avr.mk used in Makefile see
         https://github.com/McIkye/mk
