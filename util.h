@@ -15,5 +15,20 @@
  * OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+enum std_colors {
+	black = 0x00,
+	blue = 0x01,
+	green = 0x10,
+	cyan = 0x11,
+	red = 0x80,
+	brown = 0x81,
+	yellow = 0x90,
+	white = 0x91
+};
+
 void usdelay(unsigned short);
 void msdelay(unsigned short); 
+void puthexb(char, char, char);
+
+void puckmaze(char);
+

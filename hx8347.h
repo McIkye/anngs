@@ -15,7 +15,19 @@
  * OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+enum hx8347_attr {
+	FONT0, FONT1, FONT2, FONT3, FONTMASK = 3,
+	NORMAL =0x00,	/* black/white */
+	STATUS =0x04,	/* white/blue */
+	ALERT  =0x08,	/* red/white */
+	MESG   =0x0c,	/* black/gray */
+	REVERSE=0x80,	/* flag to reverse any of the above */
+
+};
+
 void hx8347_init(void);
+void hx8347_clip(char, char, char, char);
+void hx8347_puckmap(const char *, char, char, char);
 void hx8347_putchar(char, char, char, char);
 char hx8347_length(const char *, char);
 void hx8347_putstr(char, char, const char *, char);
